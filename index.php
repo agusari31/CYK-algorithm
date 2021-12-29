@@ -47,6 +47,7 @@
                             <?php
 
                             if (isset($_POST['submit'])) {
+                                //connect to database
                                 $conn = mysqli_connect("localhost", "root", "", "cfg");
 
                                 $result = mysqli_query($conn, "SELECT * FROM tb_cfg");
@@ -63,12 +64,17 @@
                                     $rules[] = $row;
                                 }
 
+                                //string input
                                 $input = $_POST['input'];
 
+                                //convert string to lower case
                                 $kalimat = strtolower($input);
 
+                                //split string to word and turn in to array
                                 $word = explode(" ", $kalimat);
 
+                                //cyk implementation
+                                //table declaration
                                 $x = array();
 
                                 for ($i = 0; $i < count($word); $i++) {
@@ -77,6 +83,7 @@
                                     }
                                 }
 
+                                //checking using cyk
                                 for ($i = 0; $i < count($word); $i++) {
                                     for ($j = $i; $j < count($word); $j++) {
                                         if ($i == 0) {
@@ -146,16 +153,18 @@
 
 
                             ?>
+
+                            <!--Print the cyk table-->
                                 <div>
                                     <h4 id="cky" class="display-5 px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">Algoritma CYK</h4>
-                                    <table style="font-size:9px;" class="table">
+                                    <table style="font-size:14px;" class="table">
                                         <?php for ($i = 0; $i < count($word); $i++) { ?>
                                             <tr>
-                                                <td class="table-primary">
+                                                <td class="table-success">
                                                     <?php echo $word[$i] ?>
                                                 </td>
                                                 <?php for ($j = 0; $j < count($word); $j++) { ?>
-                                                    <td class="table-info shadow-lg p-1 mb-5 bg-white rounded">
+                                                    <td class="table-primary shadow p-1 mb-5 bg-white">
                                                         <?php echo $x[$i][$j]; ?>
                                                     </td>
                                                 <?php } ?>
@@ -166,6 +175,8 @@
 
 
                                 <?php
+
+                                //check the string are valid or not
                                 $h = 0;
                                 $final = explode(",", $x[0][count($word) - 1]);
                                 foreach ($final as $accept) {
@@ -273,7 +284,9 @@
                         </div>
                     </div>
                 </div>
-                <!--B4-->
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
