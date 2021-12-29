@@ -264,38 +264,7 @@
                                     }
 
                                 ?>
-                                    <div class="container">
-
-                                        <table class="table text-center table-borderless">
-                                            <tr>
-                                                <?php for ($i = 0; $i < count($word); $i++) { ?>
-                                                    <th class="table-primary">
-                                                        <?php echo $word[$i] ?>
-                                                    </th>
-                                                <?php } ?>
-                                            </tr>
-                                            <?php for ($i = 0; $i < count($word); $i++) { ?>
-                                                <tr>
-                                                    <?php for ($j = 0; $j < count($word); $j++) { ?>
-                                                        <?php if ($P[$i][$j] != "") { ?>
-                                                            <td class=" ">
-                                                                <div style="" class="shadow-lg p-1  bg-white rounded">
-                                                                    <p><?php echo $P[$i][$j]; ?></p>
-                                                                </div>
-
-                                                            </td>
-                                                        <?php } else { ?>
-                                                            <td class="">
-                                                                <?php echo $P[$i][$j]; ?>
-                                                            </td>
-                                                        <?php } ?>
-
-                                                    <?php } ?>
-                                                </tr>
-                                            <?php } ?>
-                                        </table>
-                                    </div>
-
+                                    
                             <?php
                                 }
                             }
