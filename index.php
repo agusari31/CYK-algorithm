@@ -72,7 +72,8 @@
 
                                 //split string to word and turn in to array
                                 $word = explode(" ", $kalimat);
-
+                                //echo("$word");
+                                
                                 //cyk implementation
                                 //table declaration
                                 $x = array();
@@ -94,8 +95,12 @@
                                                 }
                                             }
                                             $ter = implode(",", $has);
+                                            echo("$ter");
 
                                             $x[$j - $i][$j] = $ter;
+                                            echo("isi j". $j);
+                                            echo("isi i". $i);
+                                            echo("\n");
                                         } elseif ($i > 0) {
                                             $cek = array();
                                             for ($k = 0; $k < $i; $k++) {
@@ -192,92 +197,7 @@
                                     <h3 class="display-5 px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center text-danger">Invalid</h3>
                                 <?php
                                 }
-
-                                if ($h == 1) {
-
-
-                                    $result3 = mysqli_query($conn, "SELECT * FROM tb_cfg where kategori='CG'");
-                                    $result4 = mysqli_query($conn, "SELECT * FROM tb_cfg2 where kategori='CG'");
-                                    $rules1 = [];
-                                    while ($row = mysqli_fetch_assoc($result3)) {
-                                        $rules1[] = $row;
-                                    }
-                                    while ($row = mysqli_fetch_assoc($result4)) {
-                                        $rules1[] = $row;
-                                    }
-
-                                    $P = array();
-
-                                    for ($i = 0; $i < count($word); $i++) {
-                                        for ($j = 0; $j < count($word); $j++) {
-                                            $P[$i][$j] = "";
-                                        }
-                                    }
-
-
-                                    for ($i = 0; $i < 2; $i++) {
-                                        for ($j = count($word) - 1; $j >= 0; $j--) {
-                                            if ($i == 0) {
-                                                foreach ($rules1 as $rule) {
-                                                    if ($word[$j] == $rule['terminal']) {
-                                                        $P[$i][$j] = $rule['variabel'];
-                                                    }
-                                                }
-                                            } elseif ($i > 0) {
-                                                if ($j == count($word) - 1) {
-                                                    $g = 0;
-                                                    foreach ($rules1 as $rule) {
-                                                        if ($P[0][(count($word) - 1)] == $rule['terminal']) {
-                                                            $P[1][(count($word) - 1)] = $rule['variabel'];
-                                                            $K = 1;
-                                                            $L = count($word) - 1;
-                                                            $g = 1;
-                                                        }
-                                                    }
-                                                    if ($g == 0) {
-                                                        $P[1][(count($word) - 1)] = "";
-                                                        $K = 1;
-                                                        $L = count($word) - 1;
-                                                    }
-                                                } elseif ($j < count($word) - 1) {
-                                                    $term = $P[0][$j] . " " . $P[$K][$L];
-                                                    $z = 0;
-                                                    foreach ($rules1 as $rule) {
-                                                        if ($term == $rule['terminal']) {
-                                                            $P[$K][$j] = $P[0][$j];
-                                                            $P[$K + 1][$j] = $rule['variabel'];
-                                                            $P[0][$j] = "";
-                                                            $u = $K + 1;
-                                                            $K = $u;
-                                                            $L = $j;
-                                                            $z = 1;
-                                                        }
-                                                    }
-                                                    if ($z == 0) {
-                                                        $q = 0;
-                                                        foreach ($rules1 as $rule) {
-                                                            if ($P[0][$j] == $rule['terminal']) {
-                                                                $P[1][$j] = $rule['variabel'];
-                                                                $K = 1;
-                                                                $L = $j;
-                                                                $q = 1;
-                                                            }
-                                                        }
-                                                        if ($q == 0) {
-                                                            $P[1][$j] = "";
-                                                            $K = 1;
-                                                            $L = $j;
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-
-                                ?>
-                                    
-                            <?php
-                                }
+                                
                             }
                             ?>
 
