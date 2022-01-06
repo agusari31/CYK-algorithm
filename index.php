@@ -95,12 +95,7 @@
                                                 }
                                             }
                                             $ter = implode(",", $has);
-                                            echo("$ter");
-
                                             $x[$j - $i][$j] = $ter;
-                                            echo("isi j". $j);
-                                            echo("isi i". $i);
-                                            echo("\n");
                                         } elseif ($i > 0) {
                                             $cek = array();
                                             for ($k = 0; $k < $i; $k++) {
